@@ -1,0 +1,100 @@
+//Практическая 1
+class Words {
+    init {
+        println("Класс Words был создан!")
+    }
+}
+
+fun main() {
+    // Создаем объекты класса Words
+    val words1 = Words()
+    val words2 = Words()
+    val words3 = Words()
+}
+
+//Практическая 2
+class Message(private val username: String) {
+    fun introduce() {
+        println("Привет, меня зовут $username")
+    }
+}
+
+fun main() {
+    val message1 = Message("Екатерина")
+    message1.introduce()
+
+    val message2 = Message("Егор")
+    message2.introduce()
+
+    val message3 = Message("Собакен")
+    message3.introduce()
+}
+
+//Практическая 3
+n class Animal(val food: String, val location: String) {
+    open fun makeNoise() {
+        println("Такое-то животное спит")
+    }
+
+    open fun eat() {
+        println("Животное ест $food")
+    }
+
+    fun sleep() {
+        println("Животное спит в $location")
+    }
+}
+
+class Dog(food: String, location: String, val breed: String) : Animal(food, location) {
+    override fun makeNoise() {
+        println("Собака породы $breed лает: Гав-гав!")
+    }
+
+    override fun eat() {
+        println("Собака ест $food")
+    }
+}
+
+class Cat(food: String, location: String, val color: String) : Animal(food, location) {
+    override fun makeNoise() {
+        println("Кот цвета $color мяукает: Мяу-мяу!")
+    }
+
+    override fun eat() {
+        println("Кот ест $food")
+    }
+}
+
+class Horse(food: String, location: String, val speed: Int) : Animal(food, location) {
+    override fun makeNoise() {
+        println("Лошадь со скоростью $speed км/ч ржет: Иго-го!")
+    }
+
+    override fun eat() {
+        println("Лошадь ест $food")
+    }
+}
+
+class Veterinarian {
+    fun treatAnimal(animal: Animal) {
+        println("Рассмотрим предложенное животное. Еда: ${animal.food}, Место обитания: ${animal.location}")
+    }
+}
+
+fun main() {
+    val animals = arrayOf(
+        Dog("мясо", "будка", "русский спаниель"),
+        Cat("мелкие грызуныы", "доме", "черный"),
+        Horse("сено", "поле", 50)
+    )
+
+    val vet = Veterinarian()
+
+    for (animal in animals) {
+        vet.treatAnimal(animal)
+        animal.makeNoise()
+        animal.eat()
+        animal.sleep()
+        println()
+    }
+}
